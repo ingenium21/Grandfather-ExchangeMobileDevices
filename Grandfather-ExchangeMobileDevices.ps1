@@ -11,7 +11,7 @@ $DeviceAgeLimit = (Get-Date).AddDays(-$AgeLimit)
 write-host "Processing Devices that have synched after:" $DeviceAgeLimit -ForegroundColor Green
 Write-Host "WARNING: Only devices that have synched in the last 30 days will be ported over!"
 
-$MailboxList = Get-CasMailbox * -resultsSize Unlimited | where {$_.ActiveSyncEnabled -eq $true} 
+$MailboxList = Get-CasMailbox * -resultSize Unlimited | where {$_.ActiveSyncEnabled -eq $true}
 
 foreach ($Mailbox in $MailboxList) {
     #Copy the template object and work with that
