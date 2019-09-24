@@ -45,14 +45,14 @@ foreach ($Mailbox in $MailboxList) {
     }
     #Write the collection of devices allowed for the given user
     #for testing i'm going to write-host this output to make sure it's correct
-    write-host "Set-CASMailbox $Mailbox.Identity -ActiveSyncAllowedDeviceIDs $DeviceIDs"
+    Set-CASMailbox $Mailbox.Identity -ActiveSyncAllowedDeviceIDs $DeviceIDs
 
     #list out the collection of devices allowed for the given user
     Write-Host "For User: $Mailbox Found " ($DeviceIDs).count " Devices"
 
     #populate the working Object with the necessary details
     $workObj.DisplayName = $Mailbox
-    $workObj.AllowedDeviceIDs = $DeviceIDs
+    $workObj.AllowedDeviceIDs = $DeviceIDs | Out-String
 
     #Display output to screen.
     $workObj
