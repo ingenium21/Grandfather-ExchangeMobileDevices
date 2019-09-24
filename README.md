@@ -18,7 +18,7 @@ Please run this in your lab and test before running in production.
 Script is being executed from a Office 365 Exchange powershell session, if you're not familiar with how to do that please go to this site:
 https://www.tachytelic.net/2018/12/connect-office-365-powershell/
 
-You will need to connect to Exchange O365 first.
+You will need to connect to Exchange O365 first. I added a script called Connect-ExchangeOnline.ps1 that does that.  You just need to provide your O365 credentials.
 You can also run this in an on-prem Exchange Management Shell
 
 Script will be executed by someone who has the correct permissions to do so (My account has Global Admin permissions)
