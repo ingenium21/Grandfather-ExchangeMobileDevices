@@ -2,7 +2,7 @@
 $Output = @()
 
 #create a custom PS Object that will be used as a template from multiple sources
-$tempObj = New-Object PSObject | select DisplayName, AllowedDeviceIDs
+$tempObj = New-Object PSObject | Select-Object DisplayName, AllowedDeviceIDs
 
 #Create a maximum of age of devices that are to be carried over.  If the device has not synched successfully in this period, it won't be grandfathered in
 $AgeLimit = 30
@@ -11,7 +11,7 @@ $DeviceAgeLimit = (Get-Date).AddDays(-$AgeLimit)
 write-host "Processing Devices that have synched after:" $DeviceAgeLimit -ForegroundColor Green
 Write-Host "WARNING: Only devices that have synched in the last 30 days will be ported over!"
 
-$MailboxList = Get-CasMailbox * -resultSize Unlimited | where {$_.ActiveSyncEnabled -eq $true}
+$MailboxList = Get-CasMailbox * -resultSize Unlimited | Where-Object {$_.ActiveSyncEnabled -eq $true}
 
 foreach ($Mailbox in $MailboxList) {
     #Copy the template object and work with that
